@@ -1,5 +1,7 @@
 'use strict';
 
+var sounds = require('../controllers/sounds');
+
 // The Package is past automatically as first parameter
 module.exports = function(Sounds, app, auth, database) {
 
@@ -21,4 +23,8 @@ module.exports = function(Sounds, app, auth, database) {
         res.send(html);
       });
     });
+
+    app.route('/sounds')
+      .get(sounds.all)
+      .post(auth.requiresLogin, sounds.create);
 };

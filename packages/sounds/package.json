@@ -1,7 +1,7 @@
 {
   "name": "sounds",
-  "version": "0.0.0",
-  "description": "Some description of sounds",
+  "version": "0.0.1",
+  "description": "A sound with text and an audio URL.",
   "author": {
     "name": "mean scaffold"
   },
