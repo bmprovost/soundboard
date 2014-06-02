@@ -1,10 +1,11 @@
     'use strict';
 
-    angular.module('mean').controller('SoundsController', ['$scope', 'Global',
-      function($scope, $location, $http, Global, Sounds) {
+    angular.module('mean').controller('SoundsController', ['$scope', '$stateParams', '$location', '$http', 'Global',
+      function($scope, $stateParams, $location, $http, Global, Sounds) {
         $scope.global = Global;
         $scope.sounds = {name:'sounds'};
-
+        console.log($http);
+        console.log($location);
 
         $scope.hasAuthorization = function(sound) {
           if (!sound || !sound.user) return false;
@@ -13,14 +14,19 @@
 
         $scope.create = function() {
           // Create url for API request
-          console.log('hello');
           var url = 'http://tts-api.com/tts.mp3?q=' + this.text.replace(/ /g, '+') + '&return_url=1';
           var audioUrl = '';
+          console.log(url);
 
-          $http.get(url).success(function(data) {
-            console.log(data);
-            audioUrl = data;
-          });
+          $http({method: 'GET', url: url}).
+            success(function(data) {
+              audioUrl = data;
+            }).
+            error(function(data, status, headers, config) {
+              console.log('Error: ' + status);
+            }
+          );
+
 
           var sound = new Sounds({
             text: this.text,
@@ -32,7 +38,6 @@
 
           this.text = '';
         };
-
 
       }
     ]);
