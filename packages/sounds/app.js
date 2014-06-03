@@ -12,6 +12,9 @@ var Sounds = new Module('Sounds');
  * Dependency injection is used to define required modules
  */
 
+
+
+
 Sounds.register(function(app, auth, database) {
 
     //We enable routing. By default the Package Object is passed to the routes
