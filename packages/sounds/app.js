@@ -19,10 +19,10 @@ Sounds.register(function(app, auth, database) {
 
     //We are adding a link to the main menu for all authenticated users
     Sounds.menus.add({
-      title: 'sounds example page',
-      link: 'sounds example page',
+      title: 'Create Sound',
+      link: 'create sound',
       roles: ['authenticated'],
-      menu: 'main'
+      // menu: 'main'
     });
 
     /*
@@ -42,6 +42,8 @@ Sounds.register(function(app, auth, database) {
       //you now have the settings object
     });
     */
+
+    Sounds.aggregateAsset('css', 'articles.css');
 
     return Sounds;
 });
