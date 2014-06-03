@@ -1,0 +1,20 @@
+<section data-ng-controller="SoundsController" data-ng-init="find()">
+    <ul class="sounds unstyled">
+        <li data-ng-repeat="sound in sounds">
+            <span>{{sound.user.name}}</span>
+            <h2>
+                <a data-ng-href="#!/sounds/{{sound._id}}">{{sound.text}}</a>
+                <span data-ng-if="hasAuthorization(sound)">
+                    <a class="btn" href="/#!/sounds/{{sound._id}}/edit">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a class="btn" data-ng-click="remove(sound);">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </span>
+            </h2>
+            <div>{{sound.text}}</div>
+        </li>
+    </ul>
+    <h1 data-ng-hide="!sounds || sounds.length">No sounds yet. <br> Why don't you <a href="/#!/sounds/create">Create One</a>?</h1>
+</section>

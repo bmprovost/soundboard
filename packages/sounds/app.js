@@ -22,12 +22,15 @@ Sounds.register(function(app, auth, database) {
 
     //We are adding a link to the main menu for all authenticated users
     Sounds.menus.add({
-      title: 'Create Sound',
-      link: 'create sound',
-      roles: ['authenticated'],
-      // menu: 'main'
+      'title': 'Create Sound',
+      'link': 'create sound',
+      'roles': ['authenticated'],
     });
-
+    Sounds.menus.add({
+      'title': 'Sounds',
+      'link': 'all sounds',
+      'roles': ['authenticated'],
+    });
     /*
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback
@@ -46,7 +49,7 @@ Sounds.register(function(app, auth, database) {
     });
     */
 
-    Sounds.aggregateAsset('css', 'articles.css');
+    Sounds.aggregateAsset('css', 'sounds.css');
 
     return Sounds;
 });

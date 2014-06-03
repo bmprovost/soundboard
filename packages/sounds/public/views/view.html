@@ -1,0 +1,13 @@
+<section data-ng-controller="SoundsController" data-ng-init="findOne()">
+    <span>{{sound.user.name}}</span>
+    <h2>{{sound.text}}</h2>
+    <div data-ng-if="hasAuthorization(sound)">
+        <a class="btn" href="/#!/sounds/{{sound._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove(sound);">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+    <div>{{sound.text}}</div>
+</section>
