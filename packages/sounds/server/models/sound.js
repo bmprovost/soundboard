@@ -20,11 +20,6 @@ var SoundSchema = new Schema({
         default: '',
         trim: true
     },
-    audioUrl: {
-        type: String,
-        default: '',
-        trim: true
-    },
     user: {
         type: Schema.ObjectId,
         ref: 'User'
