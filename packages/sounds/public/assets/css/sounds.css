@@ -1,1 +1,8 @@
-.sounds_example h1:{background-color:purple}
+.sound-col {
+  background-color: green;
+  font-size: 3em;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  margin: 30px;
+}

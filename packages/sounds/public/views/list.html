@@ -1,37 +1,28 @@
-<section data-ng-controller="SoundsController">
-</section>
-
 <section data-ng-controller="SoundsController" data-ng-init="find()">
-    <form class="form-horizontal col-md-6" role="form" data-ng-submit="create()">
-        <div class="form-group">
-            <label mean-token="'create-text'" class="col-md-3 control-label">Text</label>
-            <div class="col-md-9">
-                <input type="text" class="form-control" data-ng-model="text" id="text" placeholder="Text" required>
+    <div class="row">
+        <form class="form-horizontal col-md-6" role="form" data-ng-submit="create()">
+            <div class="form-group">
+                <label mean-token="'create-text'" class="col-md-3 control-label">Text</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" data-ng-model="text" id="text" placeholder="Text" required>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-3 col-md-9">
-                <button type="submit" class="btn btn-info">Submit</button>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </div>
             </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-4 sound-col" data-ng-click="playSound(sound.text);" data-ng-repeat="sound in sounds">
+            <span data-ng-if="hasAuthorization(sound)">
+                <a class="btn" data-ng-click="remove(sound);">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </span>
+            <p>{{sound.text}}</p>
         </div>
-    </form>
-    <ul class="sounds unstyled">
-        <li data-ng-repeat="sound in sounds">
-            <span>{{sound.user.name}}</span>
-            <h2>
-                <a data-ng-href="#!/sounds/{{sound._id}}">{{sound.text}}</a>
-                <span data-ng-if="hasAuthorization(sound)">
-                    <a class="btn" href="/#!/sounds/{{sound._id}}/edit">
-                        <i class="glyphicon glyphicon-edit"></i>
-                    </a>
-                    <a class="btn" data-ng-click="remove(sound);">
-                        <i class="glyphicon glyphicon-trash"></i>
-                    </a>
-                </span>
-                <button type="button" data-ng-click="playSound(sound.text);">Click Me to Play Sound</button>
-            </h2>
-            <div>{{sound.text}}</div>
-        </li>
-    </ul>
-    <h1 data-ng-hide="!sounds || sounds.length">No sounds yet. <br> Why don't you <a href="/#!/sounds/create">Create One</a>?</h1>
+        <h1 data-ng-hide="!sounds || sounds.length">No sounds yet. <br> Why don't you create one?</h1>
+    </div>
 </section>

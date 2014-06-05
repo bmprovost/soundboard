@@ -15,9 +15,7 @@
             });
 
             sound.$save(function(response) {
-              Sounds.query(function(sounds) {
-                $scope.sounds = sounds;
-              });
+              $scope.find();
             });
 
             this.text = '';
