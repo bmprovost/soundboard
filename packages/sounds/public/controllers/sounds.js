@@ -10,20 +10,22 @@
         };
 
         $scope.create = function() {
-          var sound = new Sounds({
-            text: this.text,
-          });
-          sound.$save(function(response) {
-            $location.path('sounds/' + response._id);
-          });
+            var sound = new Sounds({
+              text: this.text,
+            });
 
-          this.text = '';
+            sound.$save(function(response) {
+              Sounds.query(function(sounds) {
+                $scope.sounds = sounds;
+              });
+            });
+
+            this.text = '';
         };
 
         $scope.remove = function(sound) {
             if (sound) {
                 sound.$remove();
-
                 for (var i in $scope.sounds) {
                     if ($scope.sounds[i] === sound) {
                         $scope.sounds.splice(i, 1);

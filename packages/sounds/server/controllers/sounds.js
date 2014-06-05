@@ -1,43 +1,43 @@
-    'use strict';
+'use strict';
 
-    /**
-     * Module dependencies.
-     */
-    var mongoose = require('mongoose'),
-        Sound = mongoose.model('Sound'),
-        _ = require('lodash');
+/**
+ * Module dependencies.
+ */
+var mongoose = require('mongoose'),
+    Sound = mongoose.model('Sound'),
+    _ = require('lodash');
 
 
-    /**
-     * Find sound by id
-     */
-    exports.sound = function(req, res, next, id) {
-        Sound.load(id, function(err, sound) {
-            if (err) return next(err);
-            if (!sound) return next(new Error('Failed to load sound ' + id));
-            req.sound = sound;
-            next();
-        });
-    };
+/**
+ * Find sound by id
+ */
+exports.sound = function(req, res, next, id) {
+    Sound.load(id, function(err, sound) {
+        if (err) return next(err);
+        if (!sound) return next(new Error('Failed to load sound ' + id));
+        req.sound = sound;
+        next();
+    });
+};
 
-    /**
-     * Create a sound
-     */
-    exports.create = function(req, res) {
-        var sound = new Sound(req.body);
-        sound.user = req.user;
+/**
+ * Create a sound
+ */
+exports.create = function(req, res) {
+    var sound = new Sound(req.body);
+    sound.user = req.user;
 
-        sound.save(function(err) {
-            if (err) {
-                return res.send('users/signup', {
-                    errors: err.errors,
-                    sound: sound
-                });
-            } else {
-                res.jsonp(sound);
-            }
-        });
-    };
+    sound.save(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                sound: sound
+            });
+        } else {
+            res.jsonp(sound);
+        }
+    });
+};
 
 
 /**
