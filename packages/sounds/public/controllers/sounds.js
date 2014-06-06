@@ -66,7 +66,7 @@
           console.log(text);
           var plusText = text.split(' ').join('+');
           var sound = new Audio();
-          sound.src = 'http://api.voicerss.org/?key=2d4b6e7431f74f16872f3262b8c48701&src=' + plusText;
+          sound.src = 'http://tts-api.com/tts.mp3?q=' + plusText;
           sound.play();
         };
       }

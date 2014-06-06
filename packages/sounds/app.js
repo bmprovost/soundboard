@@ -48,3 +48,4 @@ Sounds.register(function(app, auth, database) {
 
     return Sounds;
 });
+

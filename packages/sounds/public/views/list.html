@@ -15,12 +15,7 @@
         </form>
     </div>
     <div class="row">
-        <div class="col-md-4 sound-col" data-ng-click="playSound(sound.text);" data-ng-repeat="sound in sounds">
-            <span data-ng-if="hasAuthorization(sound)">
-                <a class="btn" data-ng-click="remove(sound);">
-                    <i class="glyphicon glyphicon-trash"></i>
-                </a>
-            </span>
+        <div class="col-md-4 sound-col" ng-style="background-color: {{randomColor()}};" data-ng-click="playSound(sound.text);" data-ng-repeat="sound in sounds">
             <p>{{sound.text}}</p>
         </div>
         <h1 data-ng-hide="!sounds || sounds.length">No sounds yet. <br> Why don't you create one?</h1>
